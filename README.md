@@ -3,54 +3,41 @@
 
 ## Overview
 
-This project benchmarks two approaches for handling errors in asynchronous methods: one using exceptions and another using a custom `Result<T>` type for functional-style error handling. The goal is to compare the performance and memory usage of each approach and highlight the trade-offs.
+**FPvsOOP.Benchmark.Net** is a project designed to compare **Functional Programming (FP)** and **Object-Oriented Programming (OOP)** approaches in .NET. The goal is to demonstrate the strengths and weaknesses of each approach in various scenarios, helping developers understand when to use each one.
 
-## Benchmark Results Summary
+This project currently includes benchmarks that cover two primary scenarios:
 
-We benchmarked two methods:
+1. [**Exception vs. Result**](): A comparison between handling errors via exceptions (OOP) and result types (FP).
+2. **Concurrency in Shared State**: A benchmark that illustrates race conditions in shared mutable state (OOP) and shows how immutability (FP) prevents such issues.
 
-1. **`AsyncMethodWithException`**: This method throws an `ArgumentException` on every call.
-2. **`AsyncMethodWithCustomResult`**: This method returns a custom `Result<T>` object, encapsulating either a successful result or an error without throwing exceptions.
+## How to Use
 
-| Method                       | Mean       | Error       | StdDev      | Gen0   | Allocated |
-|------------------------------|------------|-------------|-------------|--------|-----------|
-| `AsyncMethodWithException`    | 12,275.37 ns | 952.969 ns  | 2,794.892 ns | 0.1373 | 1160 B    |
-| `AsyncMethodWithCustomResult` | 61.14 ns   | 2.043 ns    | 5.928 ns    | 0.0382 | 320 B     |
+Feel free to explore the existing benchmarks and run them to see the results. The project uses [BenchmarkDotNet](https://benchmarkdotnet.org/) to measure and compare the performance of different programming paradigms.
 
-### Analysis
+### Running the Benchmarks
 
-- **`AsyncMethodWithException`**: 
-   - **Performance**: Average execution time is 12,275.37 ns.
-   - **Memory Allocation**: Allocates 1160 bytes per call.
-   - **Overhead**: Exception handling is expensive in .NET, contributing to the slower execution and higher memory usage.
-  
-- **`AsyncMethodWithCustomResult`**: 
-   - **Performance**: Average execution time is only 61.14 ns, a significant improvement over the exception-based approach.
-   - **Memory Allocation**: Allocates just 320 bytes per call, demonstrating much better memory efficiency.
-
-### Conclusion
-
-- The **`AsyncMethodWithCustomResult`** is far more efficient both in terms of execution time and memory consumption compared to **`AsyncMethodWithException`**.
-- Using exceptions for flow control can significantly impact performance in .NET, especially when exceptions occur frequently.
-- **Functional-style** error handling using `Result<T>` is a better alternative for scenarios where performance and resource management are critical.
-
-## Functional.DotNet Package
-
-This project utilizes the **[Functional.DotNet](https://www.nuget.org/packages/Functional.DotNet/)** library for functional-style error handling through the `Result<T>` monad. The `Result<T>` structure is used to encapsulate both successful values and exceptions in a more controlled and efficient manner.
-
-- **GitHub**: [https://github.com/cabueno360/Functional.DotNet](https://github.com/cabueno360/Functional.DotNet)
-- **NuGet**: [Functional.DotNet on NuGet](https://www.nuget.org/packages/Functional.DotNet/)
-
-## How to Run the Benchmark
-
-To run the benchmark, clone the project and run the following command from the root directory:
+To run the benchmarks, execute the following command in the project directory:
 
 ```bash
 dotnet run -c Release
 ```
 
-The benchmarks are performed using the **[BenchmarkDotNet](https://benchmarkdotnet.org/)** library, which will generate detailed performance reports.
+## Contributing
 
-## Future Improvements
+We encourage developers to add their own tests and benchmarks that compare FP and OOP in other scenarios. Some ideas include:
 
-- Explore additional functional programming techniques to further reduce overhead and improve performance consistency.
+- Error handling
+- State management
+- Data processing
+- Parallelism and threading
+
+If you have a new test or benchmark that you'd like to contribute, feel free to submit a **Pull Request (PR)**.
+
+## Current Benchmarks
+
+- **Exception vs Result**: A comparison of error handling techniques.
+- **Concurrency in Shared State**: A comparison between shared mutable state in OOP and immutable data structures in FP.
+
+## License
+
+This project is open-source, and contributions are welcome! Please create issues or pull requests if you'd like to collaborate.

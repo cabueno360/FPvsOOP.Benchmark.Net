@@ -5,12 +5,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="coverlet.collector" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+	  <PackageReference Include="xunit" Version="2.5.3" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
 	<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	<PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
+	<PackageReference Include="FluentAssertions" Version="6.12.1" />
     <PackageReference Include="Functional.DotNet" Version="8.1.5" />
+    <PackageReference Include="xunit" Version="2.9.0" />
   </ItemGroup>
 
 </Project>
