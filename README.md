@@ -7,8 +7,8 @@
 
 This project currently includes benchmarks that cover two primary scenarios:
 
-1. [**Exception vs. Result**](): A comparison between handling errors via exceptions (OOP) and result types (FP).
-2. **Concurrency in Shared State**: A benchmark that illustrates race conditions in shared mutable state (OOP) and shows how immutability (FP) prevents such issues.
+1. [**Exception vs. Result**](https://github.com/cabueno360/FPvsOOP.Benchmark.Net/blob/main/docs/ExceptionVsResult.md): A comparison between handling errors via exceptions (OOP) and result types (FP).
+2. [**Concurrency in Shared State**](https://github.com/cabueno360/FPvsOOP.Benchmark.Net/blob/main/docs/OOPvsFP_in_Concurrent_Env.md): A benchmark that illustrates race conditions in shared mutable state (OOP) and shows how immutability (FP) prevents such issues.
 
 ## How to Use
 
